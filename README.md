@@ -8,10 +8,11 @@
 
 </div>
 
-# 🌱 root Smart Farm IoT System
+# 🌱 Smart Farm IoT System
 
-**1차 IoT → 2차 웹 → 3차 모바일 앱**  
-단계별로 확장된 통합 스마트팜 관리 시스템
+## < 단계별로 확장된 통합 스마트팜 관리 시스템 >
+<br/>
+**1차 프로젝트 IoT → 2차 프로젝트 웹 개발 → 3차 프로젝트 모바일 앱 개발**  
 
 <img width="1818" height="763" alt="Image" src="https://github.com/user-attachments/assets/74a7ab88-bedf-4768-b77d-3128926f191a" />
 
