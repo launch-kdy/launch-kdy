@@ -199,6 +199,62 @@ backend_root/
 
 ---
 
+### 👨‍💻 개인 담당 업무
+
+#### 🏠 **HomeScreen (메인 대시보드) 개발**
+
+**구현 기능:**
+- WebSocket 기반 실시간 센서 데이터 수신 및 화면 표시
+- Spring Boot API 연동하여 당일 제어 장비 작동 횟수 집계
+- 60초 주기 자동 갱신 로직 구현
+- 온도/습도/토양/조도 센서 데이터 시각화
+- LED, 팬모터, 물펌프, 모션감지 작동 통계 표시
+- 연결 상태 체크 및 로딩 화면 처리
+- dayjs 라이브러리를 활용한 실시간 타임스탬프 표시
+
+**기술 구현 내용:**
+- WebSocket 커스텀 훅(`useWebSocket`) 연동으로 실시간 데이터 통신
+- REST API 호출 및 데이터 필터링 로직 작성
+- Flexbox 기반 반응형 그리드 레이아웃 디자인
+- 센서별 색상 테마 적용 (온도: 빨강, 습도: 보라, 토양: 파랑, 조도: 초록)
+- ActivityIndicator를 활용한 로딩 상태 UI 구현
+- useEffect 훅으로 자동 갱신 및 메모리 누수 방지
+
+---
+
+#### 🌙 **다크모드 시스템 구현**
+
+**구현 기능:**
+- 라이트/다크 테마 토글 기능
+- AsyncStorage 기반 사용자 테마 설정 저장
+- Context API를 활용한 전역 테마 상태 관리
+- 앱 전체 화면에 일관된 테마 적용
+
+**기술 구현 내용:**
+- `ThemeContext` 생성 및 Provider 패턴 구현
+- AsyncStorage를 통한 테마 설정 영구 저장
+- 동적 스타일 객체 생성으로 테마별 색상 변경
+- 앱 재실행 시 저장된 테마 자동 복원
+
+---
+
+#### 🌐 **다국어 지원 시스템 구현**
+
+**구현 기능:**
+- 한국어, 영어, 일본어 3개 언어 지원
+- 설정 화면에서 언어 변경 기능
+- AsyncStorage 기반 언어 설정 저장
+- 앱 전체 텍스트 다국어 처리
+
+**기술 구현 내용:**
+- i18n 언어 리소스 파일 구조 설계 및 구현
+- `LanguageContext` 생성으로 전역 언어 상태 관리
+- AsyncStorage를 통한 언어 설정 영구 저장
+- 동적 텍스트 렌더링으로 실시간 언어 변경 반영
+- 각 화면별 번역 리소스 매핑 및 적용
+
+---
+
 ## 🧠 Tech Stack
 
 | 분류 | 기술 스택 |
@@ -206,7 +262,7 @@ backend_root/
 | **IoT / Embedded** | Python 3.11, RPi.GPIO, spidev, adafruit_dht, asyncio, websockets |
 | **Backend** | Spring Boot (Java 17), MyBatis, MariaDB |
 | **Frontend** | React (Vite), Chart.js, Axios |
-| **Mobile App** | React Native, Expo, SecureStore, WebSocket |
+| **Mobile App** | React Native, Expo, SecureStore, WebSocket, AsyncStorage |
 | **Infra** | Raspberry Pi 3B+, GitHub, VS Code Remote SSH |
 | **Design** | Figma, Glassmorphism / Apple-style UI |
 
