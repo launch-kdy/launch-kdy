@@ -3,7 +3,7 @@
 **1차 IoT → 2차 웹 → 3차 모바일 앱**  
 단계별로 확장된 통합 스마트팜 관리 시스템
 
-![root 로고](이미지경로/root-logo.png)
+![root 로고](file:///C:/Users/GRS/Desktop/rootOriginLogo.PNG.png)
 
 ---
 
