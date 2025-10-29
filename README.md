@@ -258,6 +258,84 @@ backend_root/
 
 ---
 
+### 💻 Frontend (React Web)
+
+#### 🏢 **CompanyProfile (기업 소개 페이지) 개발**
+
+**구현 기능:**
+- 스크롤 기반 인터랙티브 애니메이션 구현
+- 브랜드 스토리텔링을 위한 섹션별 레이아웃 설계
+- 라즈베리파이 하드웨어 소개 및 시스템 구조 시각화
+- 반응형 이미지 갤러리 및 슬라이더 구현
+- 실시간 스크롤 진행도 계산 및 애니메이션 트리거
+
+**기술 구현 내용:**
+- `useRef`와 `getBoundingClientRect()`를 활용한 스크롤 위치 추적
+- `useState`로 섹션별 스크롤 진행도(progress) 상태 관리
+- CSS Transform 및 Opacity를 활용한 부드러운 페이드인/슬라이드 애니메이션
+- Marquee 효과로 동적 텍스트 애니메이션 구현
+- 조건부 렌더링으로 섹션별 차별화된 애니메이션 적용
+- passive 이벤트 리스너로 스크롤 성능 최적화
+
+---
+
+#### 🎨 **고급 CSS 애니메이션 및 스타일링**
+
+**구현 기능:**
+- Glassmorphism 스타일의 블러 효과 카드 디자인
+- 그라데이션 배경 및 텍스트 클리핑 효과
+- 키프레임 애니메이션으로 요소별 등장 효과
+- 이미지 슬라이더 및 3D 회전 효과
+- 날씨별 동적 배경 애니메이션 (낮/밤 모드)
+
+**기술 구현 내용:**
+- CSS Modules를 활용한 컴포넌트 스코프 스타일링
+- `@keyframes`로 복잡한 애니메이션 시퀀스 구현
+- `backdrop-filter`와 `blur()`를 활용한 유리 질감 효과
+- `linear-gradient`와 `background-clip: text`로 그라데이션 텍스트 구현
+- CSS 변수(`--variable`)를 활용한 동적 스타일 제어
+- 마우스 hover 시 `transform: scale()` 및 `box-shadow` 변화 효과
+
+---
+
+#### 📊 **UserControl (센서 대시보드) 개발**
+
+**구현 기능:**
+- Spring Boot API 연동하여 센서 데이터 실시간 조회
+- 온도/습도/토양/조도 센서별 카드형 UI 구현
+- 모션 감지 통계 및 최근 감지 시간 표시
+- 날씨 위젯 통합 및 시간대별 배경 애니메이션
+- 센서 임계값에 따른 동적 스타일 변경
+
+**기술 구현 내용:**
+- Axios를 활용한 REST API 비동기 통신
+- `useEffect` 훅으로 컴포넌트 마운트 시 데이터 로딩
+- 배열 메서드(`map`, `filter`, `at()`)를 활용한 데이터 가공
+- CSS Grid를 활용한 반응형 카드 레이아웃
+- 조건부 클래스 바인딩으로 센서 상태별 시각적 피드백 제공
+- 시간대별 날씨 위젯 배경 및 애니메이션 효과 전환
+
+---
+
+#### ✨ **특수 효과 및 인터랙션**
+
+**구현 기능:**
+- 별똥별 애니메이션 (밤 모드)
+- 반딧불이 및 풀벌레 애니메이션 (낮/밤 모드)
+- 갈대 흔들림 효과
+- 클라우드 동기화 로더 애니메이션
+- 햇살 반짝임 및 사이렌 점멸 효과
+
+**기술 구현 내용:**
+- `Array.from()`과 `map()`을 활용한 다수 애니메이션 요소 생성
+- `Math.random()`으로 랜덤 위치 및 딜레이 설정
+- CSS `animation-delay`와 `animation-duration`으로 비동기 애니메이션 구현
+- SVG 기반 복잡한 벡터 애니메이션 (클라우드 로더)
+- `radial-gradient`와 `filter`를 활용한 빛 효과
+- `transform-origin`과 `rotate()`를 활용한 자연스러운 움직임 구현
+
+---
+
 ### 💾 Backend (Spring Boot)
 
 #### 🌱 **Growing 모듈 (환경 센서 데이터 API) 개발**
@@ -375,7 +453,7 @@ public class MotionBuzzerDTO {
 |------|-----------|
 | **IoT / Embedded** | Python 3.11, RPi.GPIO, spidev, adafruit_dht, asyncio, websockets |
 | **Backend** | Spring Boot (Java 17), MyBatis, MariaDB |
-| **Frontend** | React (Vite), Chart.js, Axios |
+| **Frontend (Web)** | React (Vite), Chart.js, Axios, CSS Modules |
 | **Mobile App** | React Native, Expo, SecureStore, WebSocket, AsyncStorage |
 | **Infra** | Raspberry Pi 3B+, GitHub, VS Code Remote SSH |
 | **Design** | Figma, Glassmorphism / Apple-style UI |
