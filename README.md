@@ -14,6 +14,7 @@
 단계별로 확장된 통합 스마트팜 관리 시스템
 
 <img width="1818" height="763" alt="Image" src="https://github.com/user-attachments/assets/74a7ab88-bedf-4768-b77d-3128926f191a" />
+
 ---
 
 ## 🔗 Repository Links
@@ -199,7 +200,9 @@ backend_root/
 
 ---
 
-### 👨‍💻 개인 담당 업무
+## 👨‍💻 개인 담당 업무
+
+### 📱 Frontend (React Native)
 
 #### 🏠 **HomeScreen (메인 대시보드) 개발**
 
@@ -252,6 +255,117 @@ backend_root/
 - AsyncStorage를 통한 언어 설정 영구 저장
 - 동적 텍스트 렌더링으로 실시간 언어 변경 반영
 - 각 화면별 번역 리소스 매핑 및 적용
+
+---
+
+### 💾 Backend (Spring Boot)
+
+#### 🌱 **Growing 모듈 (환경 센서 데이터 API) 개발**
+
+**구현 기능:**
+- 환경 센서 데이터 전체 조회 API (`GET /growings`)
+- 최근 7일간 센서 데이터 조회 API (`GET /growings/weekly`)
+- 센서 데이터 역순 조회 API (`GET /growings/rev`)
+- ResponseEntity 기반 예외 처리 및 HTTP 상태 코드 관리
+
+**기술 구현 내용:**
+- **Controller**: RESTful API 엔드포인트 설계 및 구현
+- **Service**: 비즈니스 로직 레이어 분리
+- **Mapper**: MyBatis 인터페이스를 통한 DB 접근
+- **DTO**: LocalDateTime 기반 타임스탬프 처리
+- Lombok `@RequiredArgsConstructor`로 의존성 주입
+- SLF4J 로깅으로 요청/응답 추적
+
+**API 엔드포인트:**
+
+| Method | URI | 설명 | 반환 타입 |
+|--------|-----|------|-----------|
+| GET | `/growings` | 전체 센서 데이터 조회 | `List<GrowingDTO>` |
+| GET | `/growings/weekly` | 최근 7일 데이터 조회 | `List<GrowingDTO>` |
+| GET | `/growings/rev` | 센서 데이터 역순 조회 | `List<GrowingDTO>` |
+
+**DTO 구조:**
+```java
+@Data
+public class GrowingDTO {
+  private int temperNum;           // 데이터 고유번호
+  private float temper;            // 온도 (℃)
+  private float humidity;          // 습도 (%)
+  private float soilHumidity;      // 토양 수분 (%)
+  private int illumination;        // 조도
+  private LocalDateTime createDate; // 측정 시간
+}
+```
+
+---
+
+#### 🚨 **MotionBuzzer 모듈 (보안 및 장비 제어 API) 개발**
+
+**구현 기능:**
+- 모션 감지 로그 전체 조회 API (`GET /motions`)
+- 감지 통계 및 최근 감지 시간 조회 API (`GET /motions/stats`)
+- 당일 장비 제어 횟수 조회 API (`GET /motions/today`)
+- 예외 처리 및 에러 메시지 표준화
+
+**기술 구현 내용:**
+- **Controller**: 보안 이벤트 및 장비 상태 조회 API 설계
+- **Service**: 통계 집계 로직 구현
+- **Mapper**: MyBatis를 통한 복잡한 쿼리 처리
+- **DTO**: 통계용 필드(`detectedCount`, `lastDetected`) 추가 설계
+- try-catch 블록으로 안정적인 에러 핸들링
+- HTTP 상태 코드 기반 응답 처리
+
+**API 엔드포인트:**
+
+| Method | URI | 설명 | 반환 타입 |
+|--------|-----|------|-----------|
+| GET | `/motions` | 모션 감지 로그 전체 조회 | `List<MotionBuzzerDTO>` |
+| GET | `/motions/stats` | 감지 횟수 + 최근 시간 통계 | `MotionBuzzerDTO` |
+| GET | `/motions/today` | 오늘 장비 작동 횟수 조회 | `List<MotionBuzzerDTO>` |
+
+**DTO 구조:**
+```java
+@Data
+public class MotionBuzzerDTO {
+  // 기본 로그 필드
+  private int statusId;            // 상태 로그 ID
+  private LocalDateTime timestamp; // 감지 시간
+  private boolean motionDetected;  // 모션 감지 여부 (true/false)
+  
+  // 장비 제어 상태 필드
+  private int fanMotor;            // 팬 모터 작동 횟수
+  private int waterPump;           // 물펌프 작동 횟수
+  private int ledLight;            // LED 작동 횟수
+  
+  // 통계용 필드
+  private Integer detectedCount;   // 총 감지 횟수
+  private LocalDateTime lastDetected; // 최근 감지 시간
+}
+```
+
+**주요 특징:**
+- 단일 DTO로 로그 조회 + 통계 조회 멀티 용도 처리
+- boolean 타입으로 모션 감지 상태 명확하게 표현
+- 장비별 작동 횟수를 하나의 응답으로 통합 관리
+- 모바일 앱 HomeScreen의 당일 통계 데이터 제공 API 역할
+
+---
+
+#### 🔧 **백엔드 아키텍처 설계 기여**
+
+**구현 내용:**
+- **계층형 아키텍처** 적용: Controller → Service → Mapper → DB
+- **DTO 기반 데이터 전송**: Entity 노출 방지 및 API 응답 최적화
+- **MyBatis Mapper 인터페이스** 설계로 SQL 분리 및 유지보수성 향상
+- **Lombok 활용**: 보일러플레이트 코드 최소화
+- **RESTful API 설계 원칙** 준수: 리소스 중심 URI, HTTP 메서드 적절한 사용
+- **예외 처리 표준화**: ResponseEntity로 일관된 에러 응답 제공
+
+**코드 품질:**
+- SLF4J 로거를 통한 디버깅 및 모니터링 지원
+- 생성자 주입 방식으로 불변성 보장
+- try-catch 블록으로 안정적인 예외 처리
+- HTTP 상태 코드(200 OK, 500 Internal Server Error) 명확한 구분
 
 ---
 
