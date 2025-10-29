@@ -3,7 +3,7 @@
 ### 🌐 README Languages
 
 [![한국어](https://img.shields.io/badge/한국어-blue?style=for-the-badge)](README.md)
-[![日本語](https://img.shields.io/badge/日本語-green?style=for-the-badge)](README.ja.md)
+[![日本語](https://img.shields.io/badge/日本語-green?style=for-the-badge)](README.jp.md)
 
 </div>
 
