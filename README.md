@@ -47,7 +47,7 @@ Raspberry Pi를 이용한 센서 데이터 수집과 자동 제어를 시작으�
 
 ## 🧩 System Structure
 ```
-📡 IoT Device (1차)
+📡 IoT Device Raspberry Pi (1차)
  ├─ DHT22 (온습도)
  ├─ FC-28 (토양수분)
  ├─ LDR (조도)
