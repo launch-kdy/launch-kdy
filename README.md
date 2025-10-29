@@ -3,7 +3,7 @@
 **1차 IoT → 2차 웹 → 3차 모바일 앱**  
 단계별로 확장된 통합 스마트팜 관리 시스템
 
-![root 로고](https://github.com/user-attachments/assets/rootOriginLogo.png)
+![root 로고](https://github.com/launch-kdy/launch-kdy/issues/1#issue-3564468223)
 
 ---
 
