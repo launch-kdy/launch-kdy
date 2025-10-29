@@ -204,7 +204,7 @@ backend_root/
 
 ## 🗂️ Database Design (ERD)
 
-![ERD Diagram](이미지경로/erd-diagram.png)
+<img width="1959" height="720" alt="Image" src="https://github.com/user-attachments/assets/b3fc07da-fefc-417a-8c74-a7fddd359533" />
 
 ### 주요 테이블
 
